@@ -1,0 +1,33 @@
+#inctruction_status include
+#	-1 waiting for intstruction/no instruction found
+#	0 instruction found
+#	1 instruction complete
+
+if instruction_status == 1:
+	instruction_pointer += 1
+	instruction_status = -1
+
+if instruction_pointer == 0: #command or function call
+if instruction_pointer == 1:
+if instruction_pointer == 2:
+if instruction_pointer == 3:
+if instruction_pointer == 4:	
+			...
+	
+if inctruction_status == -1:
+	instruction_status = 1
+	
+# function call's should set instruction_status to 0, and 1 when they are complete with their iterations
+function:
+	instruction_status = 0
+	# code
+	if condition == true:
+		instruction_status = 1 # tells the main system that the loop is complete 
+		
+#example function
+delay:
+	instruction_status = 0
+	delay_amount -= 1
+	if delay_amount == 0:
+		instruction_status = 1
+	
