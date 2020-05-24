@@ -1,0 +1,2 @@
+Main-Class: minecraft_interface.AutoTyperEntryPoint
+

@@ -1,0 +1,17 @@
+dropdown for constructors
+dropdown for versions
+dropdown for outputs - autotyper to minecraft console, save to mcfunction, etc.
+
+constructors define their arguments
+
+build to the left or right
+io on left or right
+
+
+
+translation window for entering translations and rotations
+translation preset options.
+premade presets, facing east, facing south, facing west, facing north
+
+relative or absolute
+offset/position
