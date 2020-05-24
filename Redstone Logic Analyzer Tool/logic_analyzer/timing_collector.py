@@ -57,5 +57,5 @@ class TimingCollector:
 				
 				
 from re import compile, match, search
-from toolbox.class_collector.class_collector import collect_child_classes
+from logic_analyzer.tools.class_collector import collect_child_classes
 from logic_analyzer.signal import Signal

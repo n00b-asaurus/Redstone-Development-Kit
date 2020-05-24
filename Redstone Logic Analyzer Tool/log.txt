@@ -1,0 +1,5 @@
+DEBUG - Parsing minecraft log
+DEBUG - Generating signals
+DEBUG - Generating image
+DEBUG - STREAM b'IHDR' 16 13
+DEBUG - STREAM b'IDAT' 41 1216
