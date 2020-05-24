@@ -1,0 +1,6 @@
+{
+	"values":[
+		"probe:init",
+		"logic_analyzer:init"
+	]
+}

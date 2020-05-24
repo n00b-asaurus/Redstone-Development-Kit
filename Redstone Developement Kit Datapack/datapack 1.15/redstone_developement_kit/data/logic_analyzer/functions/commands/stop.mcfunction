@@ -1,0 +1,1 @@
+scoreboard players set global run 0
