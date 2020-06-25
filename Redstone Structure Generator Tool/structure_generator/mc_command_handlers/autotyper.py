@@ -13,7 +13,7 @@ class AutoTyper(MCCommandHandler):
 		os.system('start /min cmd.exe @cmd /k "launch_auto_typer.bat"')
 		gateway = JavaGateway()
 		self.autotyper = gateway.entry_point.getAutoTyper()
-		console.input('Encoder ready, press Enter to begin building...')
+		console.input('Structure ready, press Enter to begin building...')
 		console.print('Building in 5')
 		sleep(1)
 		console.print('4')
