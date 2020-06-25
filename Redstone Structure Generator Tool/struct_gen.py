@@ -6,8 +6,12 @@ from structure_generator.versions.version_je1152 import VersionJE1152
 from structure_generator.io_channel import IOChannel
 from structure_generator.constructor import Constructor
 from structure_generator import minecraft
-from toolbox.class_collector import collect_child_classes
-constructors = collect_child_classes(base_class = Constructor, file_path = "structure_generator.constructors", instantiate = False, register_method = "register")
+from structure_generator.tools.bulk_import import import_subclasses
+
+constructor_classes = import_subclasses(base_class = Constructor, directory = "structure_generator.constructors", deepest_level = 1)
+constructors = {}
+for constructor in constructor_classes:
+	constructors[constructor.register()] = constructor
 
 logging.basicConfig(
 	filename = '.\\log.txt',
@@ -22,10 +26,10 @@ console = IOChannel()
 parser = ArgumentParser(description="generates a redstone structure based on a table text file and some arguments", prefix_chars='/')
 parser.add_argument('/structure', action='store', required=True, help='the type of structure you wish to generate')
 parser.add_argument('/file', action='store', required=True, help='the table used to generate the structure, must be in a .txt file')
-parser.add_argument('/facing', action='store', required=True, choices=['north','south','east','west'], help='the direction the structure will be built towards')
-parser.add_argument('/build_to', action='store', required=True, choices=['left','right'], help='the direction the structure will build towards')
+parser.add_argument('/facing', action='store', required=True, choices=['north','south','east','west'], help="the direction you're facing")
+parser.add_argument('/build_to', action='store', required=True, choices=['left','right'], help='the direction the structure will build to')
 parser.add_argument('/io_side', action='store', required=True, choices=['left','right'], help='which side the inputs or outputs will go to')
-parser.add_argument('/offset', action='store', required=True, help='offset argument')
+parser.add_argument('/offset', action='store', required=True, help='offset argument e.g. -5,4,23')
 args = parser.parse_args()
 
 log.info("Building {}".format(constructors[args.structure]))
