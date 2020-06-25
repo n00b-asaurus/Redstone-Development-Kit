@@ -24,7 +24,7 @@ log = logging.getLogger()
 console = IOChannel()
 
 parser = ArgumentParser(description="generates a redstone structure based on a table text file and some arguments", prefix_chars='/')
-parser.add_argument('/structure', action='store', required=True, help='the type of structure you wish to generate')
+parser.add_argument('/structure', action='store', required=True, choices=['basic_encoder','stenodyon_decoder','properinglish19_decoder'], help='the type of structure you wish to generate')
 parser.add_argument('/file', action='store', required=True, help='the table used to generate the structure, must be in a .txt file')
 parser.add_argument('/facing', action='store', required=True, choices=['north','south','east','west'], help="the direction you're facing")
 parser.add_argument('/build_to', action='store', required=True, choices=['left','right'], help='the direction the structure will build to')
