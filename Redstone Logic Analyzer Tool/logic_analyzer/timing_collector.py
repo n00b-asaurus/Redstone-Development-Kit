@@ -7,7 +7,7 @@ class TimingCollector:
 		self.channel_pattern 	= compile(r'channel:(.*),')
 		self.state_pattern 		= compile(r'state:(.*)$')
 		self.longest_tvalue 	= 0
-		self.signal_classes		= collect_child_classes(base_class = Signal, file_path = 'logic_analyzer.signals')
+		self.signal_classes		= import_subclasses(base_class = Signal, directory = 'logic_analyzer.signals')
 		'''
 		examples of log output
 		player 				[CHAT] <n00b_asaurus> comment: your mom
@@ -57,5 +57,5 @@ class TimingCollector:
 				
 				
 from re import compile, match, search
-from logic_analyzer.tools.class_collector import collect_child_classes
+from bulk_import import import_subclasses
 from logic_analyzer.signal import Signal

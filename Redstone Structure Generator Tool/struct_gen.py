@@ -6,7 +6,7 @@ from structure_generator.versions.version_je1152 import VersionJE1152
 from structure_generator.io_channel import IOChannel
 from structure_generator.constructor import Constructor
 from structure_generator import minecraft
-from structure_generator.tools.bulk_import import import_subclasses
+from bulk_import import import_subclasses
 
 constructor_classes = import_subclasses(base_class = Constructor, directory = "structure_generator.constructors", deepest_level = 1)
 constructors = {}
