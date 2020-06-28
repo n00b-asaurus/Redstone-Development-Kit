@@ -5,8 +5,8 @@ A collection of tools used to develop, test, and troubleshoot redstone circuits
 Minecraft Java Edition 1.15 
 
 ## Developers Requirements
-Python 3.8
-JDK9 (If you're updating the Structure Generator Java Module)
+* Python 3.8
+* JDK9 (If you're updating the Structure Generator Java Module)
 
 ## Modules
 ### Redstone Development Kit Datapack
