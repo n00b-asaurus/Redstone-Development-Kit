@@ -1,29 +1,29 @@
-#Redstone Structure Generator
+# Redstone Structure Generator
 A tool used to procedurally generate redstone circuits. 
 
-##Application
+## Application
 Used to turn documentation into in-game circuits, currently only supports horizontal encoders and decoders.
-The documentation must be formated as a .txt file containing a grid of 1's and 0's (for encoders) or 1's, X's, or 0's (for decoders).
+The documentation must be formatted as a .txt file containing a grid of 1's and 0's (for encoders) or 1's, X's, or 0's (for decoders).
 
 Example:
->000
->001
->010
->011
->100
->101
->110
->111
+* 000
+* 001
+* 010
+* 011
+* 100
+* 101
+* 110
+* 111
 
 This text can be generated in a spreadsheet, or recorded in another document, but must be copied into a .txt file before being used with the structure generator.
 
-###Making and Understanding Encoder Files
+### Making and Understanding Encoder Files
 With the following table saved as encoder.txt
-> 000101001
-> 010010100
-> 011101001
-> 110101011
-> 001111001
+* 000101001
+* 010010100
+* 011101001
+* 110101011
+* 001111001
 
 We can produce an encoder with 5 active low inputs and 9 active high output.
 Every line in encoder.txt is 1 input on the decoder, and every column of bits 1 output.
@@ -35,13 +35,13 @@ I.e. the left-most bits in encoder.txt will appear on the lefthand side of the e
 The top line (first input) of the encoder will appear in front, with every subsequent input appearing further back.
 
 
-###Making and Understanding Decoder Files
+### Making and Understanding Decoder Files
 With the following table saved as decoder.txt
-> 00X10X001
-> X100X01XX
-> 0XX101X01
-> 11X101011
-> XXX111X01
+* 00X10X001
+* X100X01XX
+* 0XX101X01
+* 11X101011
+* XXX111X01
 
 We can produce a decoder with 9 active high inputs and 5 active low outputs.
 Every column of bits is 1 input, and every line of bits is 1 output.
@@ -57,7 +57,7 @@ With physical locations, like the encoder, the bits on the lefthand side in the 
 The top line (first output) of the decoder will appear in front, with every subsequent output appearing further back.
 
 
-##Usage
+## Usage
 
 To print out a usage report, run `python struct_gen.py /h`
 
@@ -77,7 +77,7 @@ Once the generator starts, you will see commands being typed into your console, 
 While this happens, it is important that you do not tab out of your game. Doing so will cause the commands to be typed elseware.
 Wait for the generator to finish typing, and it will exit automatically when it is done.
 
-####structure
+#### structure
 Selects what kind of structure to generate.
 
 Current structures include:
@@ -85,26 +85,26 @@ Current structures include:
 * Properinglish19 Decoder - generates a compact decoder, generation is kinda slow.
 * Stenodyon Decoder - generates a slightly less compact decoder, generation works much faster
 
-####file
+#### file
 The path of the .txt file used to generate the structure. Can be relative or absolute.
 
-####facing
+#### facing
 The structure generated will always generate in front of you, top line closest to you, bottom line furthest away. Decoders inputs will always face you, as will encoder outputs.
 In order for this to work correctly, you need to tell the generator what direction you're facing.
 Valid inputs are north, south, east, and west. No quotations needed.
 
-####build_to
+#### build_to
 The structure is built relative to your position, with you being one corner.
 You can either be the left corner, which means the structure builds off to the right, or you can be the right corner, which means the structure builds off to the left.
 You can specify which direction the structure builds off to with this argument. Valid inputs are left, or right. No quotations needed.
 
-####io_side
+#### io_side
 For a decoder, the inputs will always face you. However, the outputs can either go on the left side or the right side.
 Likewise, for an encoder, the outputs will always face you. But the inputs can come in from the left or right.
 It's important to specify which side your inputs and outputs are coming from as this affects the direction of the repeaters.
 Use this argument to specify what side the inputs/outputs go to. Valid inputs are left, or right. No quotations needed.
 
-####offset
+#### offset
 With you're position being one of the corners, it's possible that a block can be placed where you stand and push you out of your position.
 This is not ideal. To prevent this, it's a good idea to add an offset to your position.
 This offset will shift the entire structure over to that position, so an offset of -4,0,0 will shift the structure back 4 meters on the X axis, while an offset of 0,1,3 will shift the structure up 1 meter on the y axis and over 3 meters on the z axis.
