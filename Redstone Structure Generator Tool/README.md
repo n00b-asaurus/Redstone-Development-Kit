@@ -3,7 +3,7 @@ A tool used to procedurally generate redstone circuits.
 
 ## Application
 Used to turn documentation into in-game circuits, currently only supports horizontal encoders and decoders.
-The documentation must be formated as a .txt file containing a grid of 1's and 0's (for encoders) or 1's, X's, or 0's (for decoders).
+The documentation must be formatted as a .txt file containing a grid of 1's and 0's (for encoders) or 1's, X's, or 0's (for decoders).
 
 Example:
 * 000
