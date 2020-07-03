@@ -1,2 +1,3 @@
 Pillow==7.1.2
+py4j==0.10.9
 git+https://github.com/n00b-asaurus/Bulk-Import
