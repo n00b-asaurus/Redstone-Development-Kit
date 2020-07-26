@@ -138,3 +138,5 @@ dmypy.json
 
 # End of https://www.toptal.com/developers/gitignore/api/python
 Redstone Structure Generator Tool/log.txt
+Redstone Logic Analyzer Tool/log.txt
+Redstone Logic Analyzer Tool/image.png
