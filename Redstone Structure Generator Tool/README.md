@@ -59,9 +59,9 @@ The top line (first output) of the decoder will appear in front, with every subs
 
 ## Usage
 
-To print out a usage report, run `python struct_gen.py /h`
+To print out a usage report, run `python '.\Redstone Structure Generator.py' /h`
 
-To generate a structure, run `python struct_gen.py /structure <STRUCTURE TYPE> /file <FILE PATH> /facing <DIRECTION> /build_to <DIRECTION> /io_side <DIRECTION> /offset <XYZ>`
+To generate a structure, run `python '.\Redstone Structure Generator.py' /structure <STRUCTURE TYPE> /file <FILE PATH> /facing <DIRECTION> /build_to <DIRECTION> /io_side <DIRECTION> /offset <XYZ>`
 
 The meaning of each argument is explained below.
 
