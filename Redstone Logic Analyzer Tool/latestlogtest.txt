@@ -1,0 +1,17 @@
+Executed 2 commands from function 'logic_analyzer:commands/start'
+[CHAT] time:300,channel:probe 1,state:true
+[CHAT] time:350,channel:probe 2,state:false
+[CHAT] time:456,channel:probe 1,state:true
+[CHAT] time:678,channel:probe 1,state:false
+[CHAT] time:791,channel:probe 2,state:true
+[CHAT] time:851,channel:probe 2,state:false
+[CHAT] time:955,channel:probe 2,state:true
+[CHAT] time:988,channel:probe 1,state:false
+[CHAT] time:1030,channel:probe 2,state:true
+[CHAT] time:1180,channel:probe 1,state:false
+[CHAT] time:1200,channel:probe 2,state:true
+[CHAT] time:1290,channel:probe 1,state:true
+[CHAT] time:1340,channel:probe 2,state:false
+[CHAT] time:1420,channel:probe 1,state:true
+[CHAT] time:1500,channel:probe 2,state:true
+Executed 1 commands from function 'logic_analyzer:commands/stop'
