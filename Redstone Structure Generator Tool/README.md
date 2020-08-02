@@ -59,23 +59,9 @@ The top line (first output) of the decoder will appear in front, with every subs
 
 ## Usage
 
-To print out a usage report, run `python '.\Redstone Structure Generator.py' /h`
+After running and stopping the logic analyzer, double click `Redstone Structure Generator` and a command terminal will open.
 
-To generate a structure, run `python '.\Redstone Structure Generator.py' /structure <STRUCTURE TYPE> /file <FILE PATH> /facing <DIRECTION> /build_to <DIRECTION> /io_side <DIRECTION> /offset <XYZ>`
-
-The meaning of each argument is explained below.
-
-Once you run that command, the program will get to work compiling all the commands needed to be run to generate that structure.
-It will prompt you when it's done with the following message:
-
-`Structure ready, press Enter to begin building...`
-
-BEFORE PRESSING ENTER make sure you have your game running, and you are standing in position. Remember the structure is built relative to your position, and you cannot stop it once it starts.
-
-Press enter and a count down will begin. You will have 5 seconds to tab into your game, and get out of any pause screens or GUI's you were in.
-Once the generator starts, you will see commands being typed into your console, and the structure will slowly start to take shape.
-While this happens, it is important that you do not tab out of your game. Doing so will cause the commands to be typed elseware.
-Wait for the generator to finish typing, and it will exit automatically when it is done.
+The terminal will then ask you to provide various arguments, which are as follows:
 
 #### structure
 Selects what kind of structure to generate.
@@ -88,21 +74,21 @@ Current structures include:
 #### file
 The path of the .txt file used to generate the structure. Can be relative or absolute.
 
-#### facing
-The structure generated will always generate in front of you, top line closest to you, bottom line furthest away. Decoders inputs will always face you, as will encoder outputs.
-In order for this to work correctly, you need to tell the generator what direction you're facing.
-Valid inputs are north, south, east, and west. No quotations needed.
+#### io_side
+For a decoder, the inputs will always face you. However, the outputs can either go on the left side or the right side.
+Likewise, for an encoder, the outputs will always face you. But the inputs can come in from the left or right.
+It's important to specify which side your inputs and outputs are coming from as this affects the direction of the repeaters.
+Use this argument to specify what side the inputs/outputs go to. Valid inputs are left, or right. No quotations needed.
 
 #### build_to
 The structure is built relative to your position, with you being one corner.
 You can either be the left corner, which means the structure builds off to the right, or you can be the right corner, which means the structure builds off to the left.
 You can specify which direction the structure builds off to with this argument. Valid inputs are left, or right. No quotations needed.
 
-#### io_side
-For a decoder, the inputs will always face you. However, the outputs can either go on the left side or the right side.
-Likewise, for an encoder, the outputs will always face you. But the inputs can come in from the left or right.
-It's important to specify which side your inputs and outputs are coming from as this affects the direction of the repeaters.
-Use this argument to specify what side the inputs/outputs go to. Valid inputs are left, or right. No quotations needed.
+#### facing
+The structure generated will always generate in front of you, top line closest to you, bottom line furthest away. Decoders inputs will always face you, as will encoder outputs.
+In order for this to work correctly, you need to tell the generator what direction you're facing.
+Valid inputs are north, south, east, and west. No quotations needed.
 
 #### offset
 With you're position being one of the corners, it's possible that a block can be placed where you stand and push you out of your position.
@@ -117,3 +103,21 @@ Examples:
 * 5,0,2 
 * 0,1,-3 
 * 0,-3,0
+
+
+### starting the generation process
+Once you've entered all your arguments, the program will get to work compiling all the commands needed to be run to generate that structure.
+It will prompt you when it's done with the following message:
+
+`Structure ready, press Enter to begin building...`
+
+BEFORE PRESSING ENTER make sure you have your game running, and you are standing in position. Remember the structure is built relative to your position, and you cannot stop it once it starts.
+
+Press enter and a count down will begin. You will have 5 seconds to tab into your game, and get out of any pause screens or GUI's you were in.
+Once the generator starts, you will see commands being typed into your console, and the structure will slowly start to take shape.
+While this happens, it is important that you do not tab out of your game. Doing so will cause the commands to be typed elseware.
+Wait for the generator to finish typing, once it's done you can press 'Enter' to exit the console.
+
+## Disclaimers 
+You may see some errors being printed once the generation is complete. These have to do with the java module, and while they are being looked into, they do not affect the structure generation.
+They are safe to ignore.
