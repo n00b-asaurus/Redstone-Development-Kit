@@ -1,4 +1,3 @@
-from toolbox.class_collector.class_collector import collect_child_classes
 from structure_generator.constructor import Constructor
 from structure_generator.datatypes.position import Position
 from structure_generator.minecraft import fill, clone, setblock, base_block, redstone_dust, redstone_torch, repeater, air
