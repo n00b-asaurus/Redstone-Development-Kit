@@ -67,9 +67,9 @@ The terminal will then ask you to provide various arguments, which are as follow
 Selects what kind of structure to generate.
 
 Current structures include:
-* Basic Encoder - generates a basic horizontal encoder
-* Properinglish19 Decoder - generates a compact decoder, generation is kinda slow.
-* Stenodyon Decoder - generates a slightly less compact decoder, generation works much faster
+* 'basic_encoder' - generates a basic horizontal encoder
+* 'properinglish19_decoder' - generates a compact decoder, generation is kinda slow.
+* 'stenodyon_decoder' - generates a slightly less compact decoder, generation works much faster
 
 #### file
 The path of the .txt file used to generate the structure. Can be relative or absolute.
