@@ -11,16 +11,16 @@ class Screen:
 		self.horizontal_offset = 0.0
 		self.channel_offset = 0.0
 		if self.size != None:
-			self.screen = Image.new(mode = "RGBA", size = self.size, color = BACKGROUND)
-			self.draw = ImageDraw.Draw(self.screen)
+			self.screen = PIL.Image.new(mode = "RGBA", size = self.size, color = BACKGROUND)
+			self.draw = PIL.ImageDraw.Draw(self.screen)
 	
 	def render(self, signals):
 		if type(signals) != list:
 			signals = [signals]
 		if self.size == None:
 			size = (int(signals[0].length * self.horizontal_scale), int((len(signals) * self.vertical_scale * 1.3) + (self.vertical_scale * 0.3))) 
-			self.screen = Image.new(mode = "RGBA", size = size, color = BACKGROUND)
-			self.draw = ImageDraw.Draw(self.screen)
+			self.screen = PIL.Image.new(mode = "RGBA", size = size, color = BACKGROUND)
+			self.draw = PIL.ImageDraw.Draw(self.screen)
 		for x in range(signals[0].length):
 			self.draw_line([(x,0.0),(x,100.0)],fill = GRID)
 		self.channel_offset = 0.3 * self.vertical_scale
@@ -44,4 +44,4 @@ class Screen:
 		x, y = coords[0] * self.horizontal_scale + self.horizontal_offset, coords[1] * self.vertical_scale + self.vertical_offset + self.channel_offset
 		self.draw.text((x,y), text = text, fill = SIGNAL, align = "center")
 		
-from PIL import Image, ImageDraw
+import PIL

@@ -1,5 +1,5 @@
 from structure_generator.mc_command_handler import MCCommandHandler
-from py4j.java_gateway import JavaGateway
+import py4j
 import os
 import logging
 log = logging.getLogger()
@@ -11,7 +11,7 @@ class AutoTyper(MCCommandHandler):
 	def __init__(self,):
 		log.debug('Launching AutoTyper.jar')
 		os.system('start /min cmd.exe @cmd /k "launch_auto_typer.bat"')
-		gateway = JavaGateway()
+		gateway = py4j.java_gateway.JavaGateway()
 		self.autotyper = gateway.entry_point.getAutoTyper()
 		console.input('Structure ready, press Enter to begin building...')
 		console.print('Building in 5')
