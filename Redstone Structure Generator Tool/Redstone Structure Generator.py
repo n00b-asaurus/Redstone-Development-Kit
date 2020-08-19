@@ -4,12 +4,17 @@ from structure_generator.versions.version_je1152 import VersionJE1152
 from structure_generator.constructor import Constructor
 from structure_generator.io_channel import IOChannel
 from structure_generator import minecraft
-from bulk_import import import_subclasses
 
-constructor_classes = import_subclasses(base_class = Constructor, directory = "structure_generator.constructors", deepest_level = 1)
-constructors = {}
-for constructor in constructor_classes:
-	constructors[constructor.register()] = constructor
+# I don't want to manually import and construct modules, but this is the only way I can get this to work with pyinstaller
+from structure_generator.constructors.basic_encoder.encoder import Encoder as BasicEncoder
+from structure_generator.constructors.properinglish19_decoder.decoder import Decoder as ProperinglishDecoder
+from structure_generator.constructors.stenodyon_decoder.decoder import Decoder as StenodyonDecoder
+	
+constructors = {
+	"basic_encoder": BasicEncoder,
+	"stenodyon_decoder": ProperinglishDecoder,
+	"properinglish19_decoder": StenodyonDecoder,
+}
 	
 console = IOChannel()
 

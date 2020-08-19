@@ -1,3 +1,2 @@
 Pillow==7.1.2
 py4j==0.10.9
-bulkimporttools==0.0.2
