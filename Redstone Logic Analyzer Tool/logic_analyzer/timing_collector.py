@@ -7,15 +7,15 @@ class TimingCollector:
 		self.channel_pattern 	= compile(r'channel:(.*),')
 		self.state_pattern 		= compile(r'state:(.*)$')
 		self.longest_tvalue 	= 0
-		self.signal_classes		= import_subclasses(base_class = Signal, directory = 'logic_analyzer.signals')
+		self.signal_classes		= [BitSignal, WordSignal]
 		'''
 		examples of log output
-		player 				[CHAT] <n00b_asaurus> comment: your mom
+		player 				[CHAT] <n00b_asaurus> comment: hello world
 		say executed 		[test_probe] hello world
 							[CHAT] [test_probe] hello world
-		say 				[@] comment: blah blah blah
-		tellraw 			[CHAT] Welcome to Minecraft Tools
-		tellraw executed 	[CHAT] my name is test_probe and my value is 69
+		say 				[@] comment: hello world
+		tellraw 			[CHAT] hello world
+		tellraw executed 	[CHAT] my name is test_probe and my value is 100
 
 		formats:
 			bit channel:	time:300,channel:probe 1,state:true
@@ -57,5 +57,6 @@ class TimingCollector:
 				
 				
 from re import compile, match, search
-from bulk_import import import_subclasses
-from logic_analyzer.signal import Signal
+# explicitly importing the modules because pyinstaller doesn't work with bulk import
+from logic_analyzer.signals.bit_signal import BitSignal
+from logic_analyzer.signals.word_signal import WordSignal
