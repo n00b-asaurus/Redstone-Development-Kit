@@ -1,6 +1,4 @@
 from logic_analyzer.colors import BACKGROUND, GRID, SIGNAL
-import logging
-log = logging.getLogger()
 
 class Screen:
 	def __init__(self, size=None):
@@ -25,9 +23,6 @@ class Screen:
 			self.draw_line([(x,0.0),(x,100.0)],fill = GRID)
 		self.channel_offset = 0.3 * self.vertical_scale
 		for signal in signals:
-			if type(signal) == str:
-				log.warning("Unknown Channel: {}".format(signal))
-				continue
 			signal.render_channel(self)
 			for x in range(0, signal.length,100):
 				self.draw_text(signal.name, (x + 5.0, 0.0))
