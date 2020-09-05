@@ -54,3 +54,18 @@ class TestScreenRenderer(TestCase):
 		failed_signals = renderer.report_failed_signals()
 		self.assertEqual(len(failed_signals), 1)
 		self.assertEqual(failed_signals[0], "grated_cheese")
+		
+	def test_render_all_channels_in_specified_order_with_multiple_nonexistant_channels(self):
+		renderer = ScreenRenderer()
+		render = renderer.render_log("tests\\latestlogtest.txt","probe 3 | grated_cheese | probe 2 | diced_tomatos | probe 1 | taco shell")
+		signals = renderer.report_rendered_signals()
+		self.assertEqual(len(signals), 3)
+		self.assertEqual(signals[0].name, "probe 3")
+		self.assertEqual(signals[1].name, "probe 2")
+		self.assertEqual(signals[2].name, "probe 1")
+		self.assertEqual(render.size,(7600, 84))
+		failed_signals = renderer.report_failed_signals()
+		self.assertEqual(len(failed_signals), 3)
+		self.assertEqual(failed_signals[0], "grated_cheese")
+		self.assertEqual(failed_signals[1], "diced_tomatos")
+		self.assertEqual(failed_signals[2], "taco shell")
