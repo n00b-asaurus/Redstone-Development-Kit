@@ -20,3 +20,15 @@ The terminal will then ask you for the names of the channels you want to render.
 If you wish to specify the order which the probes appear in, or if you would like to only show certain channels, type the name of each channel in the order you want them to appear in, and separate them with the '|' pipe character.
 Example: `probe 1 | probe 3 | probe 2` will render probe 1 at the top, probe 3 in the middle, and probe 2 at the bottom. All other channels will be ignored.
 Once you hit enter, the render, called image.png, will be generated and placed in the same folder as the Redstone Logic Analyzer.py program.
+
+Should you request a probe that does not exist, the program will report this to you after rendering the image.
+The report will usually look like this:
+
+```
+1 Channels Failed to Render
+Failed Channels:
+non-existant-channel
+```
+
+This will let you know that the channel requested will not appear in the render.
+If a channel you requested comes back as failed, you may have misspelled the name, or the channels state did not change while sampling.
