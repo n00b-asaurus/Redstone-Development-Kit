@@ -23,8 +23,3 @@ Current structures include:
 * Basic Encoder - takes a .txt file and generates a basic horizontal encoder
 * Properinglish19 Decoder - takes a .txt file and generates a compact decoder, generation is kinda slow.
 * Stenodyon Decoder - takes a .txt file and generates a slightly less compact decoder, generation works much faster
-
-### Redstone Structure Generator Java Module
-A java support module used to type console commands into minecraft.
-Currently the only way I can reliably get commands from the structure generator program to minecraft.
-Ideally, I would like to get rid of it and replace it with a python equivalent. 
