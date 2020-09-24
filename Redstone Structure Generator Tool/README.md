@@ -2,22 +2,14 @@
 A tool used to procedurally generate redstone circuits. 
 
 ## Application
-Used to turn documentation into in-game circuits, currently only supports horizontal encoders and decoders.
-The documentation must be formatted as a .txt file containing a grid of 1's and 0's (for encoders) or 1's, X's, or 0's (for decoders).
+Used to quickly and easily generage redstone structures for fast developement and testing of complex redstone circuits.
+The generation method currently supported is typing commands directly into the games chat.
 
-Example:
-* 000
-* 001
-* 010
-* 011
-* 100
-* 101
-* 110
-* 111
+The type of structures this tool can generate is infinately configurable, and each structure can request arguments needed specifically for its own generation.
+The structures currently supported are the basic encoder, the properinglish19 decoder, and the stenodyon decoder.
 
-This text can be generated in a spreadsheet, or recorded in another document, but must be copied into a .txt file before being used with the structure generator.
 
-### Making and Understanding Encoder Files
+## Making and Understanding Encoder Files
 With the following table saved as encoder.txt
 * 000101001
 * 010010100
@@ -35,7 +27,7 @@ I.e. the left-most bits in encoder.txt will appear on the lefthand side of the e
 The top line (first input) of the encoder will appear in front, with every subsequent input appearing further back.
 
 
-### Making and Understanding Decoder Files
+## Making and Understanding Decoder Files
 With the following table saved as decoder.txt
 * 00X10X001
 * X100X01XX
@@ -59,7 +51,7 @@ The top line (first output) of the decoder will appear in front, with every subs
 
 ## Usage
 
-After running and stopping the logic analyzer, double click `Redstone Structure Generator` and a command terminal will open.
+Double click `Redstone Structure Generator` and a command terminal will open.
 
 The terminal will then ask you to provide various arguments, which are as follows:
 
@@ -71,24 +63,43 @@ Current structures include:
 * properinglish19_decoder - generates a compact decoder, generation is kinda slow.
 * stenodyon_decoder - generates a slightly less compact decoder, generation works much faster
 
-#### file
-The path of the .txt file used to generate the structure. Can be relative or absolute.
+Further arguments depend entirely on the type of structure selected. Scroll down to the appropriate structures arguments list for more information.
 
-#### io_side
-For a decoder, the inputs will always face you. However, the outputs can either go on the left side or the right side.
-Likewise, for an encoder, the outputs will always face you. But the inputs can come in from the left or right.
-It's important to specify which side your inputs and outputs are coming from as this affects the direction of the repeaters.
-Use this argument to specify what side the inputs/outputs go to. Valid inputs are left, or right. No quotations needed.
+### starting the generation process
+Once you've entered all your arguments, the program will get to work compiling all the commands needed to be run to generate that structure.
+It will prompt you when it's done with the following message:
+
+`Structure ready, press Enter to begin building...`
+
+BEFORE PRESSING ENTER make sure you have your game running, and you are standing in position. Remember the structure is built relative to your position, and you cannot stop it once it starts.
+
+Press enter and a count down will begin. You will have 5 seconds to tab into your game, and get out of any pause screens or GUI's you were in.
+Once the generator starts, you will see commands being typed into your console, and the structure will slowly start to take shape.
+While this happens, it is important that you do not tab out of your game. Doing so will cause the commands to be typed elseware.
+Wait for the generator to finish typing, once it's done you can press 'Enter' to exit the console.
+
+
+## Structure Arguments
+
+### basic_encoder
+
+#### file
+The path of the .txt file used to generate the structure. Can be relative or absolute. See Making and Understanding Encoder Files.
+
+#### facing
+The structure generated will always generate in front of you, top line closest to you, bottom line furthest away. Encoder outputs will always face you.
+In order for this to work correctly, you need to tell the generator what direction you're facing.
+Valid inputs are north, south, east, and west. No quotations needed.
+
+#### input_side
+For an encoder, the outputs will always face you. However, the inputs can either go on the left side or the right side.
+It's important to specify which side your inputs are coming from as this affects the direction of the repeaters.
+Use this argument to specify what side the inputs come from. Valid inputs are left, or right. No quotations needed.
 
 #### build_to
 The structure is built relative to your position, with you being one corner.
 You can either be the left corner, which means the structure builds off to the right, or you can be the right corner, which means the structure builds off to the left.
 You can specify which direction the structure builds off to with this argument. Valid inputs are left, or right. No quotations needed.
-
-#### facing
-The structure generated will always generate in front of you, top line closest to you, bottom line furthest away. Decoders inputs will always face you, as will encoder outputs.
-In order for this to work correctly, you need to tell the generator what direction you're facing.
-Valid inputs are north, south, east, and west. No quotations needed.
 
 #### offset
 With you're position being one of the corners, it's possible that a block can be placed where you stand and push you out of your position.
@@ -104,20 +115,70 @@ Examples:
 * 0,1,-3 
 * 0,-3,0
 
+### properinglish19_decoder
 
-### starting the generation process
-Once you've entered all your arguments, the program will get to work compiling all the commands needed to be run to generate that structure.
-It will prompt you when it's done with the following message:
+#### file
+The path of the .txt file used to generate the structure. Can be relative or absolute. See Making and Understanding Decoder Files.
 
-`Structure ready, press Enter to begin building...`
+#### facing
+The structure generated will always generate in front of you, top line closest to you, bottom line furthest away. Decoders inputs will always face you.
+In order for this to work correctly, you need to tell the generator what direction you're facing.
+Valid inputs are north, south, east, and west. No quotations needed.
 
-BEFORE PRESSING ENTER make sure you have your game running, and you are standing in position. Remember the structure is built relative to your position, and you cannot stop it once it starts.
+#### output_side
+For a decoder, the inputs will always face you. But the outputs can go to the left or right.
+It's important to specify which side your outputs are going to as this affects the direction of the repeaters.
+Use this argument to specify what side the outputs go to. Valid inputs are left, or right. No quotations needed.
 
-Press enter and a count down will begin. You will have 5 seconds to tab into your game, and get out of any pause screens or GUI's you were in.
-Once the generator starts, you will see commands being typed into your console, and the structure will slowly start to take shape.
-While this happens, it is important that you do not tab out of your game. Doing so will cause the commands to be typed elseware.
-Wait for the generator to finish typing, once it's done you can press 'Enter' to exit the console.
+#### build_to
+The structure is built relative to your position, with you being one corner.
+You can either be the left corner, which means the structure builds off to the right, or you can be the right corner, which means the structure builds off to the left.
+You can specify which direction the structure builds off to with this argument. Valid inputs are left, or right. No quotations needed.
 
-## Disclaimers 
-You may see some errors being printed once the generation is complete. These have to do with the java module, and while they are being looked into, they do not affect the structure generation.
-They are safe to ignore.
+#### offset
+With you're position being one of the corners, it's possible that a block can be placed where you stand and push you out of your position.
+This is not ideal. To prevent this, it's a good idea to add an offset to your position.
+This offset will shift the entire structure over to that position, so an offset of -4,0,0 will shift the structure back 4 meters on the X axis, while an offset of 0,1,3 will shift the structure up 1 meter on the y axis and over 3 meters on the z axis.
+This transformation is applied after all rotations, so the direction you face will not affect these coordinates.
+
+Formatting for the offset argument is 3 whole integers separated by commas, no spaces or quotations.
+
+Examples: 
+* -4,1,7 
+* 5,0,2 
+* 0,1,-3 
+* 0,-3,0
+
+### stenodyon_decoder
+
+#### file
+The path of the .txt file used to generate the structure. Can be relative or absolute. See Making and Understanding Decoder Files.
+
+#### facing
+The structure generated will always generate in front of you, top line closest to you, bottom line furthest away. Decoders inputs will always face you.
+In order for this to work correctly, you need to tell the generator what direction you're facing.
+Valid inputs are north, south, east, and west. No quotations needed.
+
+#### output_side
+For a decoder, the inputs will always face you. But the outputs can go to the left or right.
+It's important to specify which side your outputs are going to as this affects the direction of the repeaters.
+Use this argument to specify what side the outputs go to. Valid inputs are left, or right. No quotations needed.
+
+#### build_to
+The structure is built relative to your position, with you being one corner.
+You can either be the left corner, which means the structure builds off to the right, or you can be the right corner, which means the structure builds off to the left.
+You can specify which direction the structure builds off to with this argument. Valid inputs are left, or right. No quotations needed.
+
+#### offset
+With you're position being one of the corners, it's possible that a block can be placed where you stand and push you out of your position.
+This is not ideal. To prevent this, it's a good idea to add an offset to your position.
+This offset will shift the entire structure over to that position, so an offset of -4,0,0 will shift the structure back 4 meters on the X axis, while an offset of 0,1,3 will shift the structure up 1 meter on the y axis and over 3 meters on the z axis.
+This transformation is applied after all rotations, so the direction you face will not affect these coordinates.
+
+Formatting for the offset argument is 3 whole integers separated by commas, no spaces or quotations.
+
+Examples: 
+* -4,1,7 
+* 5,0,2 
+* 0,1,-3 
+* 0,-3,0
