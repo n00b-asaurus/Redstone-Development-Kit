@@ -8,9 +8,6 @@ from structures.properinglish19_decoder.connections.no_connection import NoConne
 
 
 class Decoder(Structure):
-	def __init__(self):
-		pass
-	
 	def register_arguments(self):
 		return [
 			Argument("FILE", "Where's the source file?"),
