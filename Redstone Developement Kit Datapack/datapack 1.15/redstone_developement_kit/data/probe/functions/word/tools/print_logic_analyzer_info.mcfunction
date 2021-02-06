@@ -1,0 +1,1 @@
+tellraw @a ["",{"text":"time:"},{"score":{"name":"global","objective":"tick"}},{"text":",channel:"},{"selector":"@s"},{"text":",state:"},{"score":{"name":"@s","objective":"state"}}]
