@@ -17,8 +17,10 @@ class ArgumentHandler:
 		
 	def _get_value_from_argument(self, argument):
 		header_format = "{} - {} > ".format(argument.name, argument.help)
-		error_format = "{{}} is not a valid option. Try {}".format(argument.choices)
-		value = self._get_input_and_check_against_valid_options(header_format, argument.choices, error_format)
+		if argument.choices:
+			value = self._get_input_and_check_against_valid_options(header_format, argument.choices)
+		else:
+			value = input(header_format)
 		return value
 		
 	def _scrub_arguments(self, arguments):
@@ -28,9 +30,24 @@ class ArgumentHandler:
 			arguments = [arguments]
 		return arguments
 			
-	def _get_input_and_check_against_valid_options(self, header, valid_inputs, error_message_format):
-		while True:
-			user_input = input(header)
-			if valid_inputs == None or user_input in valid_inputs:
-				return user_input
-			print(error_message_format.format(user_input))
+	def _get_input_and_check_against_valid_options(self, header, options):
+		num_options = len(options)
+		selected = None
+		print(header)
+		for i, option in enumerate(options):
+			print(f"\t{i+1}: {option}")
+
+		while not selected:
+			user_input = input(f"Type out an option or give its index (1-{num_options}): ")
+			
+			try:
+				option_index = int(user_input)
+				if option_index > 0 and option_index <= num_options:
+					selected = options[option_index-1]
+				else:
+					print(f"{option_index} is not a valid option.")
+			except ValueError:
+				if user_input in options:
+					selected = user_input
+
+		return selected

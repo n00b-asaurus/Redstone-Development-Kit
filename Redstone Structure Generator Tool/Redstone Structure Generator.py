@@ -14,7 +14,8 @@ structures = {
 }
 
 argument_handler = ArgumentHandler()
-Structure = structures[argument_handler.handle(Argument("STRUCTURE", "What kind of structure is being built?", ", ".join(structures.keys())))]
+# argument_handler requires the options to be in a list so it can subscript them using []
+Structure = structures[argument_handler.handle(Argument("STRUCTURE", "What kind of structure is being built?", list(structures.keys())))]
 
 try:
 	commands = generate(Structure(), argument_handler)
