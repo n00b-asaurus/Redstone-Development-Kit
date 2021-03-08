@@ -1,12 +1,14 @@
 from logic_analyzer.screen_renderer import ScreenRenderer
 from argparse import ArgumentParser
 import os
+from pathlib import Path
 
 
 class RedstoneLogicAnalyzer:
 	input_tries_before_exit_prompt = 2
 
-	def __init__(self, log_address=None, channels_to_render=None):
+	def __init__(self, image_save_path, log_address=None, channels_to_render=None):
+		self.image_save_path    = image_save_path
 		self.log_address 		= log_address
 		self.channels_to_render = channels_to_render
 		self.renderer			= ScreenRenderer()
@@ -50,8 +52,9 @@ class RedstoneLogicAnalyzer:
 		
 	def _render_and_save_image(self):
 		render = self.renderer.render_log(self.log_address , self.channels_to_render)
-		render.save('.\image.png')
+		render.save(self.image_save_path)
 		print("Generation Complete!")
+		print(f"Image saved as: {image_save_path}")
 		
 	def _report_failed_channels(self):
 		failures = self.renderer.report_failed_signals()
@@ -72,6 +75,7 @@ if __name__ == "__main__":
 	parser = ArgumentParser()
 	parser.add_argument("-l", "--log", type=str, help="Path to latest.log.")
 	parser.add_argument("-c", "--channels", nargs="*", help="The probe names to render. Leave blank to use all channels in default order.")
+	parser.add_argument("-i", "--image_name", type=str, default="image.png", help="Path to location to save image. If name doesn't end in .png then .png will be appended or replace the given extension.")
 
 	args = parser.parse_args()
 	log_address = args.log
@@ -79,8 +83,11 @@ if __name__ == "__main__":
 	if channels_to_render is not None:
 		channels_to_render = " ".join(channels_to_render)
 	
+	# Strip extra . off the right end if there are extras and then make sure the suffix is .png
+	image_save_path = Path(args.image_name.rstrip(".")).with_suffix(".png")
+
 	try:
-		RedstoneLogicAnalyzer(log_address, channels_to_render).main()
+		RedstoneLogicAnalyzer(image_save_path, log_address, channels_to_render).main()
 	except Exception as e:
 		print("Encountered Exception: {}".format(e))
 	input("Press Enter to Continue...")
