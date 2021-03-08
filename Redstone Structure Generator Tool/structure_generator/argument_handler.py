@@ -47,7 +47,15 @@ class ArgumentHandler:
 				else:
 					print(f"{option_index} is not a valid option.")
 			except ValueError:
-				if user_input in options:
-					selected = user_input
+				# Check if any of the options starts with the user input. (Also works if the whole option is typed out.)
+				# To match any option that contains the input instead change 'o.startswith(user_input)' to 'user_input in o'
+				matching_options = [o for o in options if user_input in o] # List comprehension gives us a nice one liner.
+				
+				if len(matching_options) == 0:
+					print("No options matched.")
+				elif len(matching_options) == 1:
+					selected = matching_options[0]
+				else:
+					print("Multiple options matched. Type out enough to match just one.")
 
 		return selected
