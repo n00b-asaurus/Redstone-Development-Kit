@@ -14,16 +14,21 @@ structures = {
 }
 
 argument_handler = ArgumentHandler()
-Structure = structures[argument_handler.handle(Argument("STRUCTURE", "What kind of structure is being built?", ", ".join(structures.keys())))]
 
-try:
-	commands = generate(Structure(), argument_handler)
-	command_output = AutoTyper()
-	for count, command in enumerate(commands):
-		print("Entering command {} of {}:{}".format(count+1, len(commands), command))
-		command_output.handle(command)
-	command_output.close()
-except Exception as e:
-	print("Encountered Exception: {}".format(e))
-	
-input("Press Enter to Continue...")
+def main(): 
+	Structure = structures[argument_handler.handle(Argument("STRUCTURE", "What kind of structure is being built?", ", ".join(structures.keys())))]
+
+	try:
+		commands = generate(Structure(), argument_handler)
+		command_output = AutoTyper()
+		for count, command in enumerate(commands):
+			print("Entering command {} of {}:{}".format(count+1, len(commands), command))
+			command_output.handle(command)
+		command_output.close()
+	except Exception as e:
+		print("Encountered Exception: {}".format(e))
+		
+	input("Press Enter to Continue...")
+
+if __name__ == "__main__":
+	main()
