@@ -4,6 +4,8 @@ import os
 
 
 class RedstoneLogicAnalyzer:
+	input_tries_before_exit_prompt = 2
+
 	def __init__(self, log_address=None, channels_to_render=None):
 		self.log_address 		= log_address
 		self.channels_to_render = channels_to_render
@@ -26,12 +28,21 @@ class RedstoneLogicAnalyzer:
 			log_address_valid = os.path.isfile(self.log_address)
 		else:
 			log_address_valid = False
+		
+		multiple_try_message = ""
+		try_count = 0
 
 		while not log_address_valid:
+			try_count += 1
+			if try_count == self.input_tries_before_exit_prompt:
+				multiple_try_message = " (type 'exit' to exit script)"
+
 			if self.log_address:
 				# Don't bug the user about None not being a valid file, they haven't even given any input yet.
 				print(f"{self.log_address} is not a valid file path.")
-			self.log_address = input("Where's latest.log? > ")
+			self.log_address = input(f"Where's latest.log?{multiple_try_message} > ")
+			if self.log_address == "exit":
+				exit("Script aborted at log address input.")
 			log_address_valid = os.path.isfile(self.log_address)
 
 		if self.channels_to_render is None:
