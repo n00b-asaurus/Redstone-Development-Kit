@@ -30,9 +30,13 @@ class RedstoneLogicAnalyzer:
 		print("Failed Channels:")
 		for failure in self.renderer.report_failed_signals():
 			print(failure)
+
+
+if __name__ == "__main__":
+	# execute only if run as a script
 	
-try:		
-	RedstoneLogicAnalyzer().main()
-except Exception as e:
-	print("Encountered Exception: {}".format(e))
-input("Press Enter to Continue...")
+	try:
+		RedstoneLogicAnalyzer().main()
+	except Exception as e:
+		print("Encountered Exception: {}".format(e))
+	input("Press Enter to Continue...")
