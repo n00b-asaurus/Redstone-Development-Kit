@@ -58,4 +58,5 @@ class ArgumentHandler:
 				else:
 					print("Multiple options matched. Type out enough to match just one.")
 
+		print(f"Selected: {selected}")
 		return selected
