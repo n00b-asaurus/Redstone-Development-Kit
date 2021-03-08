@@ -1,5 +1,6 @@
 from logic_analyzer.screen_renderer import ScreenRenderer
 from argparse import ArgumentParser
+import os
 
 
 class RedstoneLogicAnalyzer:
@@ -20,8 +21,18 @@ class RedstoneLogicAnalyzer:
 
 		If log_address or channels_to_render is None then the user will be prompted for it.
 		"""
-		if self.log_address is None:
-			self.log_address 		= input("Where's latest.log? > ")
+		if self.log_address:
+			# If log_address is None then we are still waiting for user input, no need to check validity.
+			log_address_valid = os.path.isfile(self.log_address)
+		else:
+			log_address_valid = False
+
+		while not log_address_valid:
+			if self.log_address:
+				# Don't bug the user about None not being a valid file, they haven't even given any input yet.
+				print(f"{self.log_address} is not a valid file path.")
+			self.log_address = input("Where's latest.log? > ")
+			log_address_valid = os.path.isfile(self.log_address)
 
 		if self.channels_to_render is None:
 			self.channels_to_render = input("What channels are being rendered? > ")
