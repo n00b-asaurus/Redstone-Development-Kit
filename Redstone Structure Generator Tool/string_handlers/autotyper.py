@@ -17,7 +17,12 @@ class AutoTyper:
 		sleep(1)
 		print('Building...')
 		
-	def handle(self, string):
+	def handle(self, commands):
+		for count, command in enumerate(commands):
+			print("Entering command {} of {}:{}".format(count+1, len(commands), command))
+			self._type_command(command)
+		
+	def _type_command(self, string):
 		copy(string)
 		press('/')
 		keyDown('ctrl')

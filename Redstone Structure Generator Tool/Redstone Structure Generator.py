@@ -30,9 +30,7 @@ def main(structure=None):
 	try:
 		commands = generate(Structure(), argument_handler)
 		command_output = AutoTyper()
-		for count, command in enumerate(commands):
-			print("Entering command {} of {}:{}".format(count+1, len(commands), command))
-			command_output.handle(command)
+		command_output.handle(commands)
 		command_output.close()
 	except Exception as e:
 		print("Encountered Exception: {}".format(e))
