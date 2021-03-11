@@ -4,7 +4,8 @@ from structure_generator.argument import Argument
 from structures.basic_encoder.encoder import Encoder as BasicEncoder
 from structures.properinglish19_decoder.decoder import Decoder as ProperinglishDecoder
 from structures.stenodyon_decoder.decoder import Decoder as StenodyonDecoder
-from string_handlers.autotyper import AutoTyper
+#from string_handlers.autotyper import AutoTyper
+from string_handlers.mcfunction_generator import McFunctionGenerator
 from argparse import ArgumentParser
 import traceback
 
@@ -29,7 +30,7 @@ def main(structure=None):
 
 	try:
 		commands = generate(Structure(), argument_handler)
-		command_output = AutoTyper()
+		command_output = McFunctionGenerator()
 		command_output.handle(commands)
 		command_output.close()
 	except Exception as e:
