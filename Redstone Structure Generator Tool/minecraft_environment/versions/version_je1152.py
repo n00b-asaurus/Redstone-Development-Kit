@@ -8,9 +8,11 @@ from minecraft_environment.commands.clone_1 import Clone
 from minecraft_environment.commands.fill_1 import Fill
 from minecraft_environment.commands.setblock_1 import SetBlock
 
+
+
 class VersionJE1152(Version):
 	def __init__(self):
-		pass
+		self.mcfunctions_require_forwardslash = False
 	
 	def clone(self, pos1, pos2, pos3):
 		return Clone(pos1, pos2, pos3)

@@ -3,7 +3,10 @@ mc_version = None
 def set_version(version):
 	global mc_version
 	mc_version = version
-	
+
+def mcfunctions_require_forwardslash():
+	return mc_version.mcfunctions_require_forwardslash
+
 def clone(pos1, pos2, pos3):
 	return mc_version.clone(pos1, pos2, pos3)
 	
