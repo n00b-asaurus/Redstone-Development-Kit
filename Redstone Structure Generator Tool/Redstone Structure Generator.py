@@ -23,7 +23,7 @@ outputs = {
 argument_handler = ArgumentHandler()
 
 def pick_class_from_dictionary(name, help, dictionary):
-	valid_options = ", ".join(dictionary.keys())
+	valid_options = list(dictionary.keys())
 	users_choice = Argument(name, help, valid_options)
 	key = argument_handler.handle(users_choice)
 	return dictionary[key]
